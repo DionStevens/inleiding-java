@@ -4,14 +4,14 @@ import java.awt.*;
 import java.applet.Applet;
 
 public class op3 extends Applet {
-    int Positiev1;
-    int Positiev2;
-    int Negatief;
+    //int Positiev1;
+    //int Positiev2;
+    //int Negatief;
 
     public void init(){
-        Positiev1 =
-        Positiev2 =
-        Negatief =
+        //Positiev1 =
+        //Positiev2 =
+        //Negatief =
 
     }
 public void paint (Graphics g){
