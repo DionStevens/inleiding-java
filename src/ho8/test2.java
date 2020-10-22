@@ -19,7 +19,6 @@ public class test2 extends Applet {
         add(label);
         add(tekstvak);
         s = "";
-
     }
 
     public void paint(Graphics g){
