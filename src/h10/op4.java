@@ -5,25 +5,32 @@ import java.applet.Applet;
 import java.awt.event.*;
 
 public class op4 extends Applet {
-    TextField tekstvak;
-    Label label;
-    String s,tekst;
+    TextField tekstvak1;
+    TextField tekstvak2;
+    Label label1;
+    Label label2;
+    String s,tekst,a;
     int maand;
+    int jaar;
 
     public void init(){
-        tekstvak = new TextField("",20);
-        label = new Label("Type hier het maandnumber in");
-        tekstvak.addActionListener( new TekstvakListener() );
+        tekstvak1 = new TextField("",20);
+        label1 = new Label("Type hier het maandnumber in");
+        tekstvak1.addActionListener( new TekstvakListener() );
+        tekstvak2 = new TextField("",20);
+        label2 = new Label("Type hier het jaartal in");
         tekst = "";
-        add(label);
-        add(tekstvak);
+        add(label1);
+        add(label2);
+        add(tekstvak1);
+        add(tekstvak2);
 
     }
 
 
 
     public void paint(Graphics g){
-        g.drawString(tekst,50,60);
+        g.drawString(tekst,50,75);
 
 
     }
@@ -31,14 +38,22 @@ public class op4 extends Applet {
 
     class TekstvakListener implements  ActionListener {
         public void actionPerformed (ActionEvent e){
-            s = tekstvak.getText();
+            s = tekstvak1.getText();
+            a = tekstvak2.getText();
             maand = Integer.parseInt( s);
+            jaar = Integer.parseInt( a);
             switch (maand){
                 case 1:
                     tekst = "Januari 31";
                     break;
                 case 2:
-                    tekst = "Februari 29";
+                    if((jaar % 4 == 0 && !(jaar % 100 == 0))  ||
+                            jaar % 400 == 0) {
+                        tekst = "Februari 29";
+                        }
+                    else {
+                        tekst ="Februari 28";
+                }
                     break;
                 case 3:
                     tekst = "Maart 31";
