@@ -23,8 +23,9 @@ public class op2 extends Applet {
             test = new Button();
             test.setLabel("test");
             add(test);
-
+            repaint();
         }
+
 
 
     }
