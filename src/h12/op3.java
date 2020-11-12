@@ -1,8 +1,9 @@
 package h12;
 
-//import java.awt.event.*;
+import java.awt.event.*;
 import java.applet.Applet;
 import java.awt.*;
+import java.util.*;
 
 public class op3 extends Applet {
     TextField[] textvaken;
@@ -12,23 +13,30 @@ public class op3 extends Applet {
 
     public void init(){
         textvaken = new TextField[5];
-        knop = new Button("test");
-        add (knop);
 
+        for (int teller = 0; teller < textvaken.length; teller ++) {
+
+            test = new TextField("Hallus", 30);
+            add(test);
+
+        }
+
+        knop = new Button("Ok");
+        knop.addActionListener( new knopListener());
+        add (knop);
 
     }
 
 
 
-    public void paint(Graphics g){
-        for (int teller = 0; teller < textvaken.length; teller ++){
-            g.drawString("hallus",50,20*teller+20);
+    public void paint(Graphics g) {}
 
-            test = new TextField("Hallus",30);
-            add (test);
+    class knopListener implements ActionListener {
+        public void actionPerformed(ActionEvent e){
+            test.setText("");
+            repaint();
 
         }
-        repaint();
 
     }
 
