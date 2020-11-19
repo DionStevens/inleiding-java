@@ -7,17 +7,19 @@ import java.util.*;
 
 public class op3 extends Applet {
     TextField[] textvaken;
+    double[] input;
     Button knop;
     TextField test;
 
 
     public void init(){
         textvaken = new TextField[5];
+        input = new double[5];
 
         for (int teller = 0; teller < textvaken.length; teller ++) {
 
-            test = new TextField("Hallus", 30);
-            add(test);
+            textvaken[teller] = new TextField("", 30);
+            add(textvaken[teller]);
 
         }
 
@@ -33,7 +35,16 @@ public class op3 extends Applet {
 
     class knopListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
-            test.setText("");
+
+            for (int indexNumber = 0; indexNumber < textvaken.length ; indexNumber++ ){
+                System.out.println(textvaken[indexNumber]);
+                input[indexNumber] = Double.parseDouble(textvaken[indexNumber].getText());
+
+            }
+            Arrays.sort(input);
+            for (int indexNumber = 0; indexNumber < input.length ; indexNumber++ ){
+                textvaken[indexNumber].setText(input[indexNumber] + "");
+            }
             repaint();
 
         }
