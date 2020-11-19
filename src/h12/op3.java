@@ -9,7 +9,6 @@ public class op3 extends Applet {
     TextField[] textvaken;
     double[] input;
     Button knop;
-    TextField test;
 
 
     public void init(){
