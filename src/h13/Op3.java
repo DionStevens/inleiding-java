@@ -7,48 +7,66 @@ import java.awt.event.*;
 public class Op3 extends Applet{
     Button muurtje;
     Button WALL;
-    int x = 0;
 
     public void init(){
         setSize(10000,1000);
         muurtje = new Button("muurtje");
         //muurtje.addActionListener(new KnopListener());
         WALL = new Button ("WALL");
-
+        //WALL.addActionListener(new KnopListener());
         add(muurtje);
         add(WALL);
 
     }
 
-
     public void paint(Graphics g) {
-        for (int teller = 0; teller < 5; teller++) {
-            x += 110;
-            Muurtje(g, x, 50, 100, 50);
-            Muurtje(g,x,105,100,50);
-            Muurtje(g,x,160,100,50);
-        }
-        for (int teller = 0; teller < 5; teller++){
-            x +=110;
-            groterMuurtje(g,x,50,120,80);
-            groterMuurtje(g,x,150,120,80);
-            groterMuurtje(g,x,250,120,80);
-
-        }
+        muurtje(g,50,50,8,6,10,10);
+        grootmuurtje(g,100,100,4,3,20,20);
     }
 
-    public void Muurtje(Graphics g,int x1,int y1,int width,int height) {
+    public void Backsteen(Graphics g,int x1,int y1,int width,int height) {
         g.setColor(Color.red);
         g.fillRect(x1, y1, width, height);
     }
 
-    public void groterMuurtje(Graphics g,int x1,int y1, int widht, int height){
-        g.setColor(Color.gray);
-        g.fillRect(x1,y1,widht,height);
+    public void muurtje(Graphics g,int height,int width,int rij,int kolom,int x,int y){
+        int spaceBetween = 0;
+        g.fillRect(0, 0, width * kolom + kolom * 10, rij * height);
+        for (int teller = 0; teller<rij; teller++){
+            for (int teller2 = 0; teller2<kolom; teller2++){
+                x = teller2 * width + spaceBetween;
+                y = teller * height;
+                Backsteen(g,x,y,width,height);
+                spaceBetween += 10;
+            }
+            spaceBetween = (teller % 2 == 0) ? 10 : 0;
+        }
 
     }
+
+    public void BetonBlock(Graphics g,int x1,int y1, int widht, int height){
+        g.setColor(Color.gray);
+        g.fillRect(x1,y1,widht,height);
+    }
+
+    public void grootmuurtje(Graphics g,int height,int width,int rij,int kolom,int x,int y){
+        int spaceBetween = 0;
+        g.fillRect(0, 0, width * kolom + kolom * 10, rij * height);
+        for (int teller = 0; teller<rij; teller++){
+            for (int teller2 = 0; teller2<kolom; teller2++){
+                x = teller2 * width + spaceBetween;
+                y = teller * height;
+                BetonBlock(g,x,y,width,height);
+                spaceBetween += 10;
+            }
+            spaceBetween = (teller % 2 == 0) ? 10 : 0;
+        }
+
+    }
+
     /*class KnopListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+
 
             }
             repaint();
@@ -56,4 +74,5 @@ public class Op3 extends Applet{
 
     }
 */
+
 }

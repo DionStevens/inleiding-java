@@ -30,8 +30,6 @@ public class Op2 extends Applet {
             for (int teller2 = 0; teller2<kolom; teller2++){
                 x = teller2 * width + spaceBetween;
                 y = teller * height;
-                System.out.println("x: " + x);
-                System.out.println("y: " + y);
                 Backsteen(g,x,y,width,height);
                 spaceBetween += 10;
             }
