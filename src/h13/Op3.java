@@ -7,21 +7,23 @@ import java.awt.event.*;
 public class Op3 extends Applet{
     Button muurtje;
     Button WALL;
+    boolean tekenMuurtje = false;
+    boolean tekenWALL = false;
 
     public void init(){
         setSize(10000,1000);
         muurtje = new Button("muurtje");
-        //muurtje.addActionListener(new KnopListener());
+        muurtje.addActionListener(new KnopListener());
         WALL = new Button ("WALL");
-        //WALL.addActionListener(new KnopListener());
+        WALL.addActionListener(new KnopListener2());
         add(muurtje);
         add(WALL);
 
     }
 
     public void paint(Graphics g) {
-        muurtje(g,50,50,8,6,10,10);
-        grootmuurtje(g,100,100,4,3,20,20);
+        if (tekenMuurtje) muurtje(g,50,50,8,6,10,10);
+        if (tekenWALL) grootmuurtje(g,100,100,4,3,20,20);
     }
 
     public void Backsteen(Graphics g,int x1,int y1,int width,int height) {
@@ -64,15 +66,21 @@ public class Op3 extends Applet{
 
     }
 
-    /*class KnopListener implements ActionListener {
+    class KnopListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-
-
-            }
+            tekenMuurtje = true;
+            tekenWALL = false;
             repaint();
         }
 
     }
-*/
 
+
+    class KnopListener2 implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            tekenMuurtje = false;
+            tekenWALL = true;
+            repaint();
+        }
+    }
 }
